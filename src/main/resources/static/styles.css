@@ -1,0 +1,158 @@
+article
+{
+    font-size: normal;
+    margin-bottom: 5pt;
+}
+
+body
+{
+    background-image: url(images/Mountain.jpg);
+    background-repeat: round;
+    margin-left: auto;
+    margin-right: auto;
+    background-attachment: fixed;
+
+}
+
+nav[id="main_buttons"]
+{
+    background-color: rgb(68,101,135);
+    font-family: 'Sorts Mill Goudy', serif;
+    text-shadow: 1px 1px 2px black, 0 0 1em black;
+    font-size: 20px; 
+    border-radius: 0 0 25px 25px;
+}
+
+nav[id="main_buttons"] ul
+{
+   padding: 0;
+   margin: 0;
+   
+   list-style: none;
+   position: relative;
+}
+
+nav[id="main_buttons"] ul li
+{
+    
+    border-radius: 0 0 25px 25px;
+    margin: 0px 2em 0 15px;
+    display: inline-block;
+    background-color: rgb(68,101,135);
+}
+
+
+nav[id="main_buttons"] a
+{
+    display: block;
+    padding: 0 10px;
+    color: #FFF;
+    font-size: 20px;
+    line-height: 60px;
+    text-decoration: none;
+}
+
+nav[id="main_buttons"] a:hover
+{
+    color: black;
+    background-color: white;
+    text-decoration: underline;
+}
+
+.box
+{
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+    margin-top: 3%;
+    margin-left: 38%;
+    margin-right: 38%;
+    position: relative;
+    
+       
+    border-radius: 17%;
+    border:1px solid rgb(170, 170, 170);    
+    box-shadow: 0 0 15px rgb(104, 103, 103);
+
+    overflow: hidden;
+    padding: 45px 0;
+}
+  
+.box:before 
+{
+    content: "";
+    background-image: url("static/images/Mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    z-index: 1;
+    -webkit-filter: blur(5px) brightness(80%);
+    filter: blur(5px) brightness(80%);
+}
+
+h4 
+{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    
+    margin-bottom: 40px;
+    margin-left: 25%;
+    margin-top: 2%;
+    
+    width: 50%;
+    font-size: 35px; 
+    font-family: 'Sorts Mill Goudy', serif;
+    
+    color: white;
+    text-shadow: 2px 2px 2px black, 1px 1px 1em black;
+}
+
+h5 
+{
+    margin: 0;  /*top,right,bottom,left*/
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+button
+{
+    position: relative;
+    background:  rgb(83,97,131);
+    color: white;
+
+    z-index: 2;
+    border-radius: 0 25px 0 25px;
+    
+    padding: 8px 37px 8px 37px;
+    margin-top: 30px;
+    left: 33%;
+}
+
+.inputData {
+    position: relative;
+    z-index: 2;
+    left: 21%;
+    right: 21%;
+}
+
+.inputData input {
+    border-radius: 25px;
+    display: block;
+    padding: 5px;
+    margin-bottom: 10px;
+
+}
+
+.inputData input[type="submit"] {
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.inputData .error {
+    color: red;
+}
