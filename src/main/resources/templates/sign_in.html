@@ -25,6 +25,7 @@
             <h4>Logowanie</h4>
             <form method="post" th:object="${signin_model}" class="inputData">
 
+                
                 <div th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error">error</div>
                 <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">error</div>
 

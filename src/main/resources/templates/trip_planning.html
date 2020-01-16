@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="Pl-pl"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>GOTHelper</title>
+
+        <meta name="keywords" content="Logowanie, GOTHelper, góry, wycieczki">
+        <meta name="description" content="Strona logowania"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>
+
+    </head>
+
+    <div th:insert="navbar :: bar"></div>
+    <body>
+
+
+    <div class="container">
+
+        <div class="mapbox">
+            <div class="menupanel">
+
+                <div class="panel"></div>
+
+            </div>
+
+            <div class="map">
+                <img th:src="@{/images/{image}(image=${img_filename})}">
+            </div>
+        </div>
+
+    </div>
+    </body>
+
+
+
+
+</html>
