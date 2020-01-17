@@ -12,6 +12,44 @@
         <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var panel = $('#panel');
+                // var selectsList = [$('#selectPoint')];
+                // var select = selectsList[selectsList.length - 1];
+                var select = $('selectPoint').val(1);
+
+                console.log('dupa');
+                $.ajax({
+                    type: 'GET',
+                    url: '/points/all',
+                    success: function (data) {
+                        console.log('pupa');
+                        data.forEach(function (p) {
+                            select.append(
+                                $('<option></option>').val(p.idP).text(p.name)
+                            )
+                        })
+                    }
+                });
+
+                select.change(function () {
+                    var pointId = $(this).val();
+                    console.log('valval');
+                    $.ajax({
+                        type: 'GET',
+                        url: '/points/' + pointId,
+                        success: function (data) {
+                            data.forEach(console.log, console);
+                        },
+                        error: function () {
+                            alert('error')
+                        }
+                    });
+                });
+            });
+        </script>
 
     </head>
 
@@ -20,16 +58,16 @@
 
 
     <div class="container">
-
         <div class="mapbox">
             <div class="menupanel">
-
-                <div class="panel"></div>
+                <div id="panel">
+                      <select id="selectPoint"></select>
+                </div>
 
             </div>
 
             <div class="map">
-                <img th:src="@{/images/{image}(image=${img_filename})}">
+                <img th:src="@{'data:image/jpeg;base64,'+${img}}">
             </div>
         </div>
 

@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -33,6 +34,19 @@ public class Drawer {
     public void setColor(Color color) {
         this.graphics.setPaint(color);
     }
+
+    public void drawText(String text, int x, int y) {
+        graphics.drawString(text, x, y);
+    }
+
+    public byte[] getImageAsBytes() throws IOException  {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(image, "jpg", baos);
+		baos.flush();
+		byte[] imageInByte = baos.toByteArray();
+		baos.close();
+		return imageInByte;
+	}
 
 
 

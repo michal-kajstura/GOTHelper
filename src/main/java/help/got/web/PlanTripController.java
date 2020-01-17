@@ -4,21 +4,20 @@ import help.got.data.PointRepository;
 import help.got.model.Drawer;
 import help.got.model.Point;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -27,7 +26,7 @@ import java.util.List;
 @RequestMapping("/plan_trip")
 public class PlanTripController {
 
-	private CrudRepository pointRepo;
+	private PointRepository pointRepo;
 	private Drawer drawer;
 	private Path imageDir =
 			Paths.get("", "src", "main", "resources", "static", "images");
@@ -58,32 +57,36 @@ public class PlanTripController {
 			p.setLon(p.getLon() - minLon);
 		}
 
-		drawPointsOnMap(points);
+		var imageBytes = drawPointsOnMap(points);
+		var imageBase64 = Base64.encodeBase64String(imageBytes);
+		model.addAttribute("img", imageBase64);
+		model.addAttribute("points", points);
 
-		model.addAttribute("img_filename", "map_temp.png");
 
 		return "trip_planning";
 	}
 
-	private void drawPointsOnMap(List<Point> points) {
+	private byte[] drawPointsOnMap(List<Point> points) {
+
 		var imageFile = Paths.get(imageDir.toString(), DEFAULT_IMAGE_NAME).toFile();
+		byte[] imageBytes = null;
 
 		try {
 			var image = ImageIO.read(imageFile);
 			drawer = new Drawer(image, Color.BLUE, 5);
 			drawPoints(points);
-			var outPath = Paths.get(imageDir.toString(), "map_temp.png");
 
 			var p = points.get(0);
 			var scaledLon = (int) (p.getLon() * 22000) + 270;
 			var scaledLat = 550 - (int) (p.getLat() * 22000);
 
-			drawer.setColor(Color.RED)
+			drawer.setColor(Color.RED);
 			drawer.drawPoint(scaledLon, scaledLat, 10);
-			drawer.saveFile(outPath);
+			imageBytes = drawer.getImageAsBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return imageBytes;
 	}
 
 	private void drawPoints(List<Point> points) {
@@ -91,8 +94,24 @@ public class PlanTripController {
 			var scaledLon = (int) (p.getLon() * 25000) + 270;
 			var scaledLat = 550 - (int) (p.getLat() * 22000);
 			drawer.drawPoint(scaledLon, scaledLat, 5);
+			drawer.drawText(p.getName(), scaledLon, scaledLat);
 		}
 	}
 
+	@RequestMapping(value = "/points/{pointId}", method = RequestMethod.GET)
+	public @ResponseBody List<Point> getNeighbours(@PathVariable("pointId") Long pointId) {
+	    var pointOpt = pointRepo.findById(pointId);
+	    if (pointOpt.isPresent()) {
+	    	var p = (Point) pointOpt.get();
+	    	return p.getNeighbours();
+		} else {
+	        return Collections.emptyList();
+		}
+	}
+
+	@RequestMapping(value = "/points/all", method = RequestMethod.GET)
+	public @ResponseBody List<Point> getAllPoints() {
+	    return pointRepo.findAll();
+	}
 
 }

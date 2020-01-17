@@ -192,7 +192,8 @@ h5
     justify-content: center;
 }
 
-.mapbox .menupanel .panel {
+.mapbox .menupanel #panel {
+    display: block;
     background-image: linear-gradient(rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
     border:1px solid rgb(170, 170, 170);
     box-shadow: 0 0 15px rgb(104, 103, 103);
