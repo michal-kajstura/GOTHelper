@@ -16,9 +16,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
 
 @Slf4j
@@ -76,12 +74,6 @@ public class PlanTripController {
 			drawer = new Drawer(image, Color.BLUE, 5);
 			drawPoints(points);
 
-			var p = points.get(0);
-			var scaledLon = (int) (p.getLon() * 22000) + 270;
-			var scaledLat = 550 - (int) (p.getLat() * 22000);
-
-			drawer.setColor(Color.RED);
-			drawer.drawPoint(scaledLon, scaledLat, 10);
 			imageBytes = drawer.getImageAsBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -113,5 +105,14 @@ public class PlanTripController {
 	public @ResponseBody List<Point> getAllPoints() {
 	    return pointRepo.findAll();
 	}
+
+	@RequestMapping(value = "/points/map", method = RequestMethod.GET)
+	public @ResponseBody String getMap() {
+		var imageBytes = drawPointsOnMap(Collections.emptyList());
+		var imageBase64 = Base64.encodeBase64String(imageBytes);
+		return imageBase64;
+
+	}
+
 
 }

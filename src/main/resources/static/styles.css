@@ -174,25 +174,15 @@ h5
     overflow: hidden;
 }
 
-.mapbox .map {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mapbox .map img {
-    border-radius: 5%;
-    height: 100%;
-}
 
 .mapbox .menupanel {
-    flex-basis: 50.0%;
+    flex-basis: 40.0%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.mapbox .menupanel #panel {
+.mapbox .menupanel .panel {
     display: block;
     background-image: linear-gradient(rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
     border:1px solid rgb(170, 170, 170);
@@ -201,10 +191,18 @@ h5
     width: 95%;
 }
 
-/*    border-radius: 17%;*/
-/*    border:1px solid rgb(170, 170, 170);*/
-/*    box-shadow: 0 0 15px rgb(104, 103, 103);*/
+.mapbox .map {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
 
-/*    overflow: hidden;*/
-/*    padding: 45px 0;*/
-/*}*/
+
+.mapbox .map canvas {
+    background-color: blue;
+    border-radius: 5%;
+    width: 1100px;
+    height: 600px;
+}
