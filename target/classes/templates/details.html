@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="Pl-pl" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <title>GOTHelper</title>
+
+    <meta name="keywords" content="Szczegóły, GOTHelper, góry, wycieczki">
+    <meta name="description" content="Szczegóły"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <link rel="stylesheet" href="details.css" type="text/css"/>
+
+</head>
+
+
+<div th:insert="navbar :: bar"></div>
+<body>
+
+<!-- Kod bloku z info -->
+
+<div class="box">
+    <div class = "info-box" id = "details">
+        <nav class="title">
+            <h4>Szczegóły wycieczki</h4>
+        </nav>
+
+        <div class="box">
+            <img src="images/sniezka.jpg"  alt="Zdjęcie góry" id = "img"/>
+            <h2 style="display: block; ">Śnieżka - 20.10.19</h2>
+        </div>
+
+        <div class = "description">
+            <h3>Status zatwierdzenia: <a href="http://localhost:8080/status_changing" style="color: red;">Niezatwierdzona</a></h3>
+            Kategoria: Dla początkujących
+            </br>
+            </br>    Góry: Karkonosze
+            </br>    Data rozpoczęcia: 20.10.2019 12:20
+            </br>    Data zakończenia: 20.10.2019 14:46
+            </br>    Długość: 5.6 km
+            </br>    Uzyskanych punktów: 10
+            </br>
+
+            </br>    Trasa:
+            </br>   Schronisko PTTK Samotnia - Schronisko PTTK Strzecha Akademicka - Kościoł Białego Jaru - Kopa - Przełęcz Pod Śnieżką - Schronisko Dom Śląski - Odejście Drogi Jubileuszowej - Szczyt Śnieżki -  Odejście Drogi Jubileuszowej - Schronisko Dom Śląski
+
+        </div>
+    </div>
+
+
+    <!-- Kod bloku z komentarzami i ocenami -->
+    <div class = "opinion-box" id = "opinions">
+
+        <nav class="title">
+            <h4>Opinii</h4>
+        </nav>
+
+        <form method="post" th:object="${details_model}">
+
+        <div class="border">
+            <ul>
+                <li><img src="images/star5.png" class="grade" alt="Ocena"/><a>Bardzo ładne widoki!</a></li>
+                <li><img src="images/gstar.png" class="grade" alt="Ocena"/><a>Moja pierwsza wycieczka. Polecam początkującym.</a></li>
+
+                <p><textarea name="comment" placeholder="Wpisz tutaj swój komentarz..." class="inputData"></textarea></p>
+
+                <!--                <div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="error">error</div>-->
+<!--                <p><input type="text" name="comment" placeholder="Wpisz tutaj swój komentarz..." class="inputData" th:value="${comment}"></p>-->
+
+            </ul>
+        </div>
+
+        <div class="box">
+            <p><button style="font-size:19px; " value="Ocenić" class="button">Ocenić</button></p> /*input type="submit"*/
+            <p><input type="submit" style="background-color: white; color: rgb(83,97,131);" value="Dodać komentarz" class="button"></p>
+        </div>
+        </form>
+
+    </div>
+</div>
+
+</body>
+
+</html>

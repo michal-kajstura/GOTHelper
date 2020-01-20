@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="Pl-pl"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8"/>
+        <title>GOTHelper</title>
+
+        <meta name="keywords" content="Logowanie, GOTHelper, góry, wycieczki">
+        <meta name="description" content="Strona logowania"/>
+
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                // function draw() {
+                //     var canvas = document.getElementById("mapCanvas");
+                //
+                //     canvas.style.position = "absolute";
+                //     var ctx = canvas.getContext("2d");
+                //      ctx.arc(250, 210, 200, 0, 2 * Math.PI, false);
+                //      ctx.lineWidth = 3;
+                //      ctx.strokeStyle = '#00ff00';
+                //      ctx.stroke();
+                // }
+
+                // draw();
+                // var panel = $('#panel');
+                // var selectsList = [$('#selectPoint')];
+                // var select = selectsList[selectsList.length - 1];
+                var select = $('selectPoint').val(1);
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/points/all',
+                    success: function (data) {
+                        console.log('pupa');
+                        data.forEach(function (p) {
+                            select.append(
+                                $('<option></option>').val(p.idP).text(p.name)
+                            )
+                        })
+                    }
+                });
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/plan_trip/points/map',
+                    success: function (data) {
+                        console.log('dupa');
+                        var canvas = document.getElementById("mapCanvas");
+                        var ctx = canvas.getContext("2d");
+
+                        console.log(data);
+                        var img_cont = document.getElementById('img_cont');
+                        img_cont.src = 'data:image/jpeg;base64,' +  data;
+                        img_cont.onload = function () {
+                            canvas.width = this.naturalWidth;
+                            canvas.height = this.naturalHeight;
+                            ctx.drawImage(this, 0, 0);
+                        };
+                    },
+                    error: function () {
+                        alert("oopse");
+                    }
+                });
+                console.log('dupa2');
+
+                select.change(function () {
+                    var pointId = $(this).val();
+                    console.log('valval');
+                    $.ajax({
+                        type: 'GET',
+                        url: '/points/' + pointId,
+                        success: function (data) {
+                            data.forEach(console.log, console);
+                        },
+                        error: function () {
+                            alert('error')
+                        }
+                    });
+                });
+            });
+        </script>
+
+    </head>
+
+    <div th:insert="navbar :: bar"></div>
+    <body>
+
+    <div class="container">
+        <div class="mapbox">
+            <div class="menupanel">
+                <div class="panel">
+                      <select id="selectPoint"></select>
+                </div>
+
+            </div>
+
+            <div class="map">
+<!--                <img id="mapImg" th:src="@{'data:image/jpeg;base64,'+${img}}">-->
+<!--                <img id="img_cont" />-->
+                <canvas id="mapCanvas"></canvas>
+            </div>
+        </div>
+
+    </div>
+    </body>
+
+
+
+
+</html>

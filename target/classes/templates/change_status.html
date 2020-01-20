@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="Pl-pl">
+<head>
+    <meta charset="utf-8"/>
+    <title>GOTHelper</title>
+
+    <meta name="keywords" content="Szczegóły, GOTHelper, góry, wycieczki">
+    <meta name="description" content="Szczegóły"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+    <link rel="stylesheet" href="changes.css" type="text/css"/>
+
+</head>
+
+<body>
+
+<nav id="main_buttons">
+    <ul>
+        <li><a href="Logowanie.html" >Główna</a></li>
+        <li><a href="Lista wycieczek.html">Wycieczki</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a>O nas</a></li>
+    </ul>
+</nav>
+
+<br/>
+
+<form action="handler.php">
+    <p><h3>Czy ty chcesz zmienić status wycieczki na zatwierdzona?</h3></p>
+    <p><input type="radio" name="answer" value="a1">Tak
+        <input type="radio" name="answer" value="a2">Nie</p>
+    <p><input type="submit" class="button" onClick="alert('Status zmieniono!')"></p>
+</form>
+</body>
+
+</html>

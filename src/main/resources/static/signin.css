@@ -1,0 +1,125 @@
+.box
+{
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    width: 330px;
+    height: auto; /*290px*/
+
+    border-radius: 17%;
+    border:1px solid rgb(170, 170, 170);
+    box-shadow: 0 0 15px rgb(104, 103, 103);
+
+    overflow: hidden;
+    padding: 45px 0;
+}
+
+.box:before
+{
+    content: "";
+    background-image: url("images/Mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    z-index: 1;
+    -webkit-filter: blur(5px) brightness(80%);
+    filter: blur(5px) brightness(80%);
+}
+
+.inputData
+{
+    position: relative;
+    z-index: 2;
+    border-radius: 25px;
+    padding: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputData input {
+    border-radius: 25px;
+    padding: 5px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.inputData input[type="submit"] {
+    position: relative;
+    background:  rgb(83,97,131);
+    color: white;
+
+    z-index: 2;
+    border-radius: 0 25px 0 25px;
+
+    padding: 8px 37px 8px 37px;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputData .error {
+    color: red;
+    text-shadow: 2px 2px 2px white, 1px 1px 1em white;
+    text-align: center;
+    margin: 15px;
+    margin-top:0;
+}
+
+.container {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mapbox {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    height: 95%;
+    overflow: hidden;
+}
+
+
+.mapbox .menupanel {
+    flex-basis: 40.0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapbox .menupanel .panel {
+    display: block;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+    border:1px solid rgb(170, 170, 170);
+    box-shadow: 0 0 15px rgb(104, 103, 103);
+    height: 100%;
+    width: 95%;
+}
+
+.mapbox .map {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+
+.mapbox .map canvas {
+    background-color: blue;
+    border-radius: 5%;
+    width: 1100px;
+    height: 600px;
+}

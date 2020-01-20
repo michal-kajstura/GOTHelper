@@ -1,0 +1,205 @@
+.info-box
+{
+    background-color:  rgba(255, 255, 255, 0.55);
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: 100px;
+    position: relative;
+
+    width: 620px;
+    height: auto;
+
+    border-radius: 12%;
+    border:1px solid rgb(170, 170, 170);
+    box-shadow: 0 0 15px rgb(104, 103, 103);
+
+    overflow: hidden;
+    padding: 45px 0;
+
+}
+
+
+.info-box:before
+{
+    background-color:  rgba(255, 255, 255, 0.836);
+    /* -webkit-filter: brightness(80%);
+    filter:brightness(80%); */
+
+    content: "";
+    background-image: url("images/Mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    position: absolute;
+    width: 110%;
+    height: 25%;
+
+    top: -5%;
+    left: -5%;
+    z-index: 1;
+
+
+}
+
+.opinion-box
+{
+    background-color:  rgba(255, 255, 255, 0.55);
+    margin-top: 3%;
+    margin-left: 100px;
+    margin-right: auto;
+    position: relative;
+
+    width: 850px;
+    height: auto;
+
+    border-radius: 12%;
+    border:1px solid rgb(170, 170, 170);
+    box-shadow: 0 0 15px rgb(104, 103, 103);
+
+    overflow: hidden;
+    padding: 45px 0;
+
+}
+
+.opinion-box:before
+{
+    content: "";
+    background-image: url("images/Mountain.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    z-index: 1;
+    -webkit-filter: blur(5px) brightness(80%);
+    filter: blur(5px) brightness(80%);
+
+}
+
+.border
+{
+    padding: 20px;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.border li
+{
+    list-style-type: none;
+    font-family: "Trebuchet MS", "Lucida Sans";
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 25px;
+    margin:0px 0px 35px 0px;
+    border-radius: 17px;
+
+    background-color:  rgba(255, 255, 255, 0.85);
+    box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+         -2px -2px 5px 0 rgba(0,0,0,.1),
+        2px 2px 5px 0 rgba(0,0,0,.1),
+        -2px 2px 5px 0 rgba(0,0,0,.1);
+    font-size: 20px;
+}
+
+.button
+{
+    position: relative;
+    background:  rgb(83,97,131);
+    color: white;
+    font-size: 16px;
+
+    z-index: 2;
+    border-radius: 0 25px 0 25px;
+
+    width: 180px;
+    height: 45px;
+
+    padding: 28px 37px 28px 37px;
+    margin: 40px;
+
+}
+
+.inputData
+{
+    border-radius: 17px;
+    resize: none;
+
+    padding: 25px;
+    margin:0px 0px 35px 0px;
+
+    width: 718px;
+    height: 80px;
+    font-size: 20px;
+}
+
+/*Sąsiednie elementy*/
+
+.box
+{
+    z-index: 2;
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.grade
+{
+    height: 45px;
+    width: 45px;
+    margin:15px;
+    vertical-align:middle;
+}
+
+#img
+{
+    border-radius: 50%;
+
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    margin: 30px 30px 0 30px;
+
+    display: block;
+}
+
+.description
+{
+    padding: 0 5% 5% 5%;
+    font-size: 20px;
+}
+
+/* Nadgłówki na blokach */
+
+/*
+.title
+{
+    position: relative;
+    z-index: 2;
+    border-radius: 12% 12% 0 0 ;
+    background-color:  rgba(255, 255, 255, 0.85);
+
+    height:100px;
+
+} */
+/*
+
+
+
+

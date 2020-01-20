@@ -49,7 +49,7 @@ public class SignUpController {
 	    var tourist = signToTourist(signup);
 	    touristRepository.save(tourist);
 
-	    return "redirect:/sign_in";
+	    return "redirect:/login";
 	}
 
 	private Tourist signToTourist(SignUp signUp) {

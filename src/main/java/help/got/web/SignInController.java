@@ -45,7 +45,7 @@ public class SignInController {
 	    	return "sign_in";
 		}
 
-	    return "redirect:/sign_up";
+	    return "redirect:/list";
 	}
 
 
