@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Tourist {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idT;
     private String login;
     private String email;

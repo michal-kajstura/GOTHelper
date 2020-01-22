@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="Pl-pl"
-      xmlns:th="http://www.thymeleaf.org">>
+      xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8"/>
         <title>GOTHelper</title>
@@ -19,8 +19,8 @@
     <body>
 
 
-    <div class = "box">   
-        <div class="center">
+    <div class = "container">
+        <div class="box">
 
             <h4>Rejestracja</h4>
             <form method="post" th:object="${signup_model}" class="inputData">
@@ -46,7 +46,6 @@
             </form>
 
             <a style="color: white;"  href=""><h5>Zapomniałeś hasło?</h5></a>
-            <a style="color: white;" href=""><h5>Nie masz konta?</h5></a>
        </div>
     </div>
 

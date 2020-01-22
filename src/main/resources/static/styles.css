@@ -68,38 +68,21 @@ nav[id="main_buttons"] a:hover
 .box
 {
     background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35), rgba(0,0,0,0.35));
-    margin-top: 3%;
-    margin-left: 38%;
-    margin-right: 38%;
-    position: relative;
-    
-       
+    display: flex;
+    justify-content: center;
     border-radius: 17%;
+    width: 40%;
     border:1px solid rgb(170, 170, 170);    
     box-shadow: 0 0 15px rgb(104, 103, 103);
+}
 
-    overflow: hidden;
-    padding: 45px 0;
+.box form {
+    margin-left: 10%;
+    display: block;
+    width: 90%;
 }
   
-.box:before 
-{
-    content: "";
-    background-image: url("static/images/Mountain.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    position: absolute;
-    width: 110%;
-    height: 110%;
-    top: -5%;
-    left: -5%;
-    z-index: 1;
-    -webkit-filter: blur(5px) brightness(80%);
-    filter: blur(5px) brightness(80%);
-}
-
-h4 
+h4
 {
     position: relative;
     z-index: 2;
@@ -177,13 +160,12 @@ h5
 
 .mapbox .menupanel {
     flex-basis: 40.0%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 
-.mapbox .menupanel .panel {
-    display: block;
+.mapbox .menupanel #panel {
     background-image: linear-gradient(rgba(255, 255, 255, 0.8),rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
     border:1px solid rgb(170, 170, 170);
     box-shadow: 0 0 15px rgb(104, 103, 103);
@@ -191,18 +173,45 @@ h5
     width: 95%;
 }
 
+.list {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    max-height: 100%;
+    overflow-y: auto;
+}
+
 .mapbox .map {
     flex-basis: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
 }
 
 
 .mapbox .map canvas {
-    background-color: blue;
     border-radius: 5%;
-    width: 1100px;
-    height: 600px;
+}
+
+
+.outerlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border:1px solid rgb(170, 170, 170);
+    box-shadow: 0 0 15px rgb(104, 103, 103);
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+}
+
+.path {
+    margin-left: 0;
+    overflow-y: auto;
+}
+
+.outerlist ul {
+
 }

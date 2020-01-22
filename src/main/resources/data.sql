@@ -1,3 +1,4 @@
+
 insert into turysci (idT, login, email, password) VALUES (10, 'adam123',  'adamos@gmail.com', 'haslohaslo');
 insert into turysci (idT, login, email, password) VALUES (11, 'hanna_b',  'hannas@gmail.com', 'h2h2h2');
 insert into turysci (idT, login, email, password) VALUES (12, 'jacek_placek',  'placuch@gmail.com', 'nalesnik');
@@ -19,18 +20,44 @@ insert into punkty (idP, nazwa, lat, lon) VALUES (12, 'Dwoiśniak', 49.234298, 1
 insert into punkty (idP, nazwa, lat, lon) VALUES (13, 'Liliowe', 49.225214, 19.992521);
 insert into punkty (idP, nazwa, lat, lon) VALUES (14, 'Czarny Staw Gąsienicowy', 49.232714, 20.014627);
 
+insert into odcinki(punkt_start, punkt_koniec) VALUES (0, 2);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (2, 0);
 
+insert into odcinki(punkt_start, punkt_koniec) VALUES (2, 3);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (3, 2);
 
-insert into odcinki(punkt1, punkt2) VALUES (0, 2);
-insert into odcinki(punkt1, punkt2) VALUES (2, 3);
-insert into odcinki(punkt1, punkt2) VALUES (3, 12);
-insert into odcinki(punkt1, punkt2) VALUES (12, 13);
-insert into odcinki(punkt1, punkt2) VALUES (13, 5);
-insert into odcinki(punkt1, punkt2) VALUES (3, 4);
-insert into odcinki(punkt1, punkt2) VALUES (4, 5);
-insert into odcinki(punkt1, punkt2) VALUES (5, 11);
-insert into odcinki(punkt1, punkt2) VALUES (11, 10);
-insert into odcinki(punkt1, punkt2) VALUES (10, 9);
-insert into odcinki(punkt1, punkt2) VALUES (9, 8);
-insert into odcinki(punkt1, punkt2) VALUES (8, 14);
-insert into odcinki(punkt1, punkt2) VALUES (14, 6);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (3, 12);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (12, 3);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (12, 13);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (13, 12);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (13, 5);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (5, 13);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (3, 4);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (4, 3);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (4, 5);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (5, 4);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (5, 11);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (11, 5);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (11, 10);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (10, 11);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (10, 9);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (9, 10);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (9, 8);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (8, 9);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (8, 14);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (14, 8);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (14, 6);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (6, 14);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (14, 0);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (0, 14);
