@@ -9,6 +9,9 @@ import org.springframework.validation.Errors;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Validator used for validating trip data
+ */
 @Service
 public class TripValidator {
     public class Error {
@@ -35,6 +38,10 @@ public class TripValidator {
         tripRepository = repo;
     }
 
+    /**
+     * @param trip The trip cannot be empty. The trip's name has to be unique and not empty
+     * @return Object containing errors
+     */
     public List<Error> validate(Trip trip) {
 
         var errors = new ArrayList<Error>();

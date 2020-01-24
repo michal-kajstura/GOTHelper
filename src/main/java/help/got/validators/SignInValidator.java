@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+/**
+ * Class is used to validate login form input
+ */
 @Service
 public class SignInValidator implements Validator {
 

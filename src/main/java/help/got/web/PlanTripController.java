@@ -9,7 +9,6 @@ import help.got.model.Trip;
 import help.got.utils.ImageUtils;
 import help.got.validators.TripValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -76,8 +75,7 @@ public class PlanTripController {
 	public @ResponseBody String getMap() {
 		var imageFile = Paths.get(imageDir.toString(), DEFAULT_IMAGE_NAME).toFile();
 		try {
-			var imageBytes = ImageUtils.getImageAsBytes(imageFile);
-			return Base64.encodeBase64String(imageBytes);
+			return ImageUtils.getImageAsBase64(imageFile);
 		} catch (IOException e) {
 			return e.getMessage();
 		}
