@@ -2,93 +2,84 @@ package help.got.web;
 
 import help.got.data.LineRepository;
 import help.got.data.PointRepository;
+import help.got.data.TripRepository;
 import help.got.model.Line;
 import help.got.model.Point;
 import help.got.model.Trip;
+import help.got.utils.ImageUtils;
+import help.got.validators.TripValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.imageio.ImageIO;
-import java.io.ByteArrayOutputStream;
+import help.got.validators.TripValidator.Error;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.*;
 
 @Slf4j
 @Controller
 @RequestMapping("/plan_trip")
 public class PlanTripController {
 
-	private PointRepository pointRepo;
-	private LineRepository lineRepo;
+	private PointRepository pointRepository;
+	private LineRepository lineRepository;
+	private TripRepository tripRepository;
+	private TripValidator tripValidator;
 	private Path imageDir =
 			Paths.get("", "src", "main", "resources", "static", "images");
 	private String DEFAULT_IMAGE_NAME = "map.png";
 
 	@Autowired
-	public PlanTripController(PointRepository repo, LineRepository lineRepo) {
-		pointRepo = repo;
-		this.lineRepo = lineRepo;
+	public PlanTripController(PointRepository pointRepository,
+							  LineRepository lineRepository,
+							  TripRepository tripRepository,
+							  TripValidator tripValidator) {
+	    this.pointRepository = pointRepository;
+	    this.lineRepository = lineRepository;
+		this.tripRepository = tripRepository;
+	    this.tripValidator = tripValidator;
 	}
 
 	@GetMapping
-	public String showMap(Model model) {
+	public String showMap() {
 		return "trip_planning";
-	}
-
-	private byte[] getImageAsBytes() {
-
-		var imageFile = Paths.get(imageDir.toString(), DEFAULT_IMAGE_NAME).toFile();
-		byte[] imageBytes = null;
-
-		try {
-			var image = ImageIO.read(imageFile);
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ImageIO.write(image, "jpg", baos);
-			baos.flush();
-			imageBytes = baos.toByteArray();
-			baos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return imageBytes;
 	}
 
 	@RequestMapping(value = "/points/{pointId}", method = RequestMethod.GET)
 	public @ResponseBody List<Line> getNeighbours(@PathVariable("pointId") Long pointId) {
-	    return lineRepo.getNeighbourPaths(pointId);
+	    return lineRepository.getNeighbourPaths(pointId);
 	}
-
 
 	@RequestMapping(value = "/points/all", method = RequestMethod.GET)
 	public @ResponseBody List<Point> getAllPoints() {
-	    var points = pointRepo.findAll();
-		return points;
+	    return pointRepository.findAll();
 	}
 
 	@RequestMapping(value = "/lines/all", method = RequestMethod.GET)
 	public @ResponseBody List<Line> getAllLines() {
-	    return lineRepo.findAll();
+	    return lineRepository.findAll();
 	}
 
 	@RequestMapping(value = "/save_trip", method = RequestMethod.POST)
-	public @ResponseBody void saveTrip(@RequestBody Trip trip) {
-		System.out.println(trip);
+	public @ResponseBody List<Error> saveTrip(@RequestBody Trip trip) {
+	    var errors = tripValidator.validate(trip);
+	    if (errors.size() == 0) {
+	        tripRepository.save(trip);
+		}
+	    return errors;
 	}
 
 	@RequestMapping(value = "/points/map", method = RequestMethod.GET)
 	public @ResponseBody String getMap() {
-		var imageBytes = getImageAsBytes();
-		var imageBase64 = Base64.encodeBase64String(imageBytes);
-		return imageBase64;
-
+		var imageFile = Paths.get(imageDir.toString(), DEFAULT_IMAGE_NAME).toFile();
+		try {
+			var imageBytes = ImageUtils.getImageAsBytes(imageFile);
+			return Base64.encodeBase64String(imageBytes);
+		} catch (IOException e) {
+			return e.getMessage();
+		}
 	}
-
-
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="Pl-pl"
+      xmlns:th="http://www.thymeleaf.org">>
+    <head>
+        <meta charset="utf-8"/>
+        <title>GOTHelper</title>
+
+        <meta name="keywords" content="Logowanie, GOTHelper, góry, wycieczki">
+        <meta name="description" content="Strona logowania"/>
+        
+        <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" th:href="@{/styles.css}" type="text/css"/>
+
+    </head>
+
+    <div th:insert="navbar :: bar"></div>
+    <body>
+
+
+    <div class = "box">
+        <div class="center">
+
+            <h4>Logowanie</h4>
+            <form method="post" th:object="${signin_model}" class="inputData">
+
+                
+                <div th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error">error</div>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">error</div>
+
+                <input placeholder="Twój login" name="login"
+                        th:value="${login}">
+
+                <input type="password" placeholder="Twoje hasło" name="password"
+                        th:value="${password}">
+
+
+                <input type="submit" value="Zaloguj" >
+
+            </form>
+
+            <a style="color: white;"  href=""><h5>Zapomniałeś hasło?</h5></a>
+            <a style="color: white;" href=""><h5>Nie masz konta?</h5></a>
+       </div>
+    </div>
+
+    </body>
+
+
+
+
+</html>

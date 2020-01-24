@@ -22,8 +22,12 @@ public class Point {
     @Column(name="nazwa")
     private String name;
 
-    private double lat;
+    private Double lat;
 
     @NonNull
-    private double lon;
+    private Double lon;
+
+    private Double x;
+
+    private Double y;
 }

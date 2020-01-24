@@ -1,9 +1,6 @@
 package help.got.web;
 
-import help.got.data.TouristRepository;
 import help.got.model.SignIn;
-import help.got.model.SignUp;
-import help.got.model.Tourist;
 import help.got.validators.SignInValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
