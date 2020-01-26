@@ -71,7 +71,6 @@ class SignUpLoginTest {
         }
     }
 
-
     @Test
     void validateLoginAlreadyExists () {
         Mockito.when(repo.findByLogin("jacekplacek")).thenReturn(new Tourist());

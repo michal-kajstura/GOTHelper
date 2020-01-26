@@ -6,7 +6,7 @@ let allPoints = [];
 let allLines = [];
 let connectedLines = [];
 let background = new Image();
-let color = '#ff00ff';
+let color = '#e14818';
 let path = [];
 
 
@@ -102,7 +102,7 @@ function drawEverything(ctx, allLines, allPoints, path, connectedLines=[]) {
     }
 
     ctx.lineWidth = 2;
-    ctx.strokeStyle = '#000000';
+    ctx.strokeStyle = '#414141';
     for (let i = 0; i < connectedLines.length; i++) {
         drawLine(ctx, connectedLines[i]);
     }
@@ -110,7 +110,7 @@ function drawEverything(ctx, allLines, allPoints, path, connectedLines=[]) {
     ctx.lineWidth = 3;
     let tempColor = color;
      for (let i = 0; i < path.length; i++) {
-        tempColor = shadeColor(tempColor, i * 3);
+        tempColor = shadeColor(tempColor, i * 0.5);
         ctx.strokeStyle = tempColor;
         drawLine(ctx, path[i]);
     }
@@ -237,7 +237,11 @@ $(document).ready(function () {
                 if (errors.length === 0) {
                     connectedLines = [];
                     path = [];
+                    $('#path').empty();
                     drawEverything(ctx, allLines, allPoints, path, connectedLines);
+                    alert("Wycieczka została zapisana")
+                } else {
+                    alert(errors[0].message);
                 }
                 console.log(errors);
             },
