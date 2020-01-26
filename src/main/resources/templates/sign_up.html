@@ -23,7 +23,7 @@
         <div class="box">
                 <form method="post" th:object="${signup_model}" class="signUpForm">
                     <h4 class="row">Rejestracja</h4>
-                    <div class="errors" th:if="${#fields.hasErrors('login')}">
+                    <div class="errors" th:if="${#fields.hasErrors('login') || #fields.hasErrors('email') || #fields.hasErrors('password')} ">
                         <div th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="error">error</div><br />
                         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error">error</div><br />
                         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">error</div> <br />
@@ -43,7 +43,7 @@
 
                     <input type="submit" value="Zarejestruj" class="row" >
 
-                    <a style="color: white;margin-left: 20%"  class="row" href=""><h5>Zapomniałeś hasło?</h5></a>
+                    <a style="color: white;"  class="row" href=""><h5>Zapomniałeś hasła?</h5></a>
                 </form>
        </div>
     </div>

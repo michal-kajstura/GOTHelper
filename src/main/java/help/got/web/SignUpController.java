@@ -42,6 +42,8 @@ public class SignUpController {
 								Errors errors,
 								Model model) {
 		signUpValidator.validate(signup, errors);
+        System.out.println(errors.hasErrors());
+        model.addAttribute("errors", errors);
 	    if (errors.hasErrors()) {
 	    	return "sign_up";
 		}

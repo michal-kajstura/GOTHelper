@@ -20,6 +20,21 @@ insert into punkty (idP, nazwa, lat, lon) VALUES (12, 'Dwoiśniak', 49.234298, 1
 insert into punkty (idP, nazwa, lat, lon) VALUES (13, 'Liliowe', 49.225214, 19.992521);
 insert into punkty (idP, nazwa, lat, lon) VALUES (14, 'Czarny Staw Gąsienicowy', 49.232714, 20.014627);
 
+insert into odcinki(punkt_start, punkt_koniec) VALUES (6, 7);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (7, 6);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (6, 5);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (5, 6);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (0, 1);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (1, 0);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (1, 6);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (6, 1);
+
+insert into odcinki(punkt_start, punkt_koniec) VALUES (1, 8);
+insert into odcinki(punkt_start, punkt_koniec) VALUES (8, 1);
+
 insert into odcinki(punkt_start, punkt_koniec) VALUES (0, 2);
 insert into odcinki(punkt_start, punkt_koniec) VALUES (2, 0);
 
